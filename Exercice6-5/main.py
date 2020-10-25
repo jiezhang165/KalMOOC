@@ -1,7 +1,5 @@
 from random import random
-
 from numpy import mat
-
 from roblib import *  # available at https://www.ensta-bretagne.fr/jaulin/roblib.py
 
 y = array([0, 1, 2.5, 4.1, 5.8, 7.5])
