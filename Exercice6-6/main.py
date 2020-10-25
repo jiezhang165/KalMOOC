@@ -19,12 +19,13 @@ def f(p):
     """ Simulator """
     global A
     global B
+    A_s = A.shape
     y = inf * ones([8, 1])
     print(f)
     for i in range(8):
         u = array([cos(p[2] + pi / 4 * i), sin(p[2] + pi / 4 * i)]).reshape(2, 1)
         m = array([p[0], p[1]]).reshape(2, 1)
-        for j in range(len(A)):
+        for j in range(A_s[1]):
             a = A[:, j]
             b = B[:, j]
             a = array([a]).T
