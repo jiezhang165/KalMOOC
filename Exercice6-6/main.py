@@ -15,18 +15,25 @@ def draw(p, y, col):
         plot(p[0] + array([0, y[i] * cos(p[2] + i * pi / 4)]), p[1] + array([0, y[i] * sin(p[2] + i * pi / 4)]),
              color=col)
 
-
 def f(p):
-    '''Simulator'''
+    """ Simulator """
     global A
     global B
-
-    f = inf * ones([8, 1])
+    y = inf * ones([8, 1])
     print(f)
     for i in range(8):
         u = array([cos(p[2] + pi / 4 * i), sin(p[2] + pi / 4 * i)]).reshape(2, 1)
         m = array([p[0], p[1]]).reshape(2, 1)
-        for j in range(8)
+        for j in range(len(A)):
+            a = A[:, j]
+            b = B[:, j]
+            a = array([a]).T
+            b = array([b]).T
+            if det(hstack((a - m, u))) * det(hstack((b - m, u))) < 0:
+                alpha = -det(hstack((b - a, m - a))) / det(hstack((b - a, u)))
+                if alpha > 0:
+                    y[i] = min(alpha, y[i])
+      return y
 
 
 A = array([[0, 7, 7, 9, 9, 7, 7, 4, 2, 0, 5, 6, 6, 5],
